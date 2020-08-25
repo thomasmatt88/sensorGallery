@@ -13,8 +13,8 @@ const Stack = createStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={Gallery} />
+      <Stack.Navigator initialRouteName="Gallery">
+        <Stack.Screen name="Gallery" component={Gallery} />
         <Stack.Screen name="Accelerometer" component={AccelerometerScreen} />
       </Stack.Navigator>
     </NavigationContainer>

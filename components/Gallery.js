@@ -1,15 +1,44 @@
 import React from 'react'
-import {View, Text, Button} from 'react-native'
+import {StyleSheet, View, Text, TouchableHighlight} from 'react-native'
 
 
 export default function Gallery({ navigation }) {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={styles.container}>
         <Text>Sensor Gallery</Text>
-        <Button
-          title="Go to Accelerometer"
-          onPress={() => navigation.navigate('Accelerometer')}
-        />
+        <TouchableHighlight onPress={() => navigation.navigate('Accelerometer')} underlayColor="white">
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>Accelerometer</Text>
+          </View>
+        </TouchableHighlight>
+        <TouchableHighlight underlayColor="white">
+          <View style={[styles.button, styles.gyroscope]}>
+            <Text style={styles.buttonText}>Gyroscope</Text>
+          </View>
+        </TouchableHighlight>
       </View>
     );
   }
+
+  const styles = StyleSheet.create({
+    container: {
+        flex: 1, 
+        flexDirection: 'column', //default is 'column'
+        alignItems: 'center', 
+        justifyContent: 'space-between'
+    },
+    button: {
+        marginBottom: 30,
+        width: 260,
+        alignItems: 'center',
+        backgroundColor: '#2196F3'
+    },
+    buttonText: {
+        textAlign: 'center',
+        padding: 20,
+        color: 'white'
+    },
+    gyroscope: {
+        backgroundColor: 'red'
+    }
+  });
