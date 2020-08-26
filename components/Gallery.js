@@ -21,6 +21,11 @@ export default function Gallery({ navigation }) {
             <Text style={styles.buttonText}>Gyroscope</Text>
           </View>
         </TouchableHighlight>
+        <TouchableHighlight onPress={() => navigation.navigate('Magnetometer')} underlayColor="white">
+          <View style={[styles.button, styles.magnetometer]}>
+            <Text style={styles.buttonText}>Magnetometer</Text>
+          </View>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -48,5 +53,8 @@ export default function Gallery({ navigation }) {
     },
     gyroscope: {
         backgroundColor: 'red'
-    }
+    },
+    magnetometer: {
+        backgroundColor: 'coral'
+    },
   });

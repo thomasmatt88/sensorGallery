@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Platform } from 'react-native';
 import { Barometer } from 'expo-sensors';
 
-export default function BarometerScreen() {
+export default function BarometerScreen({navigation}) {
   const [data, setData] = useState({});
 
   useEffect(() => {
