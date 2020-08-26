@@ -11,7 +11,12 @@ export default function Gallery({ navigation }) {
             <Text style={styles.buttonText}>Accelerometer</Text>
           </View>
         </TouchableHighlight>
-        <TouchableHighlight underlayColor="white">
+        <TouchableHighlight onPress={() => navigation.navigate('Barometer')} underlayColor="white">
+          <View style={[styles.button, styles.barometer]}>
+            <Text style={styles.buttonText}>Barometer</Text>
+          </View>
+        </TouchableHighlight>
+        <TouchableHighlight onPress={() => navigation.navigate('Gyroscope')} underlayColor="white">
           <View style={[styles.button, styles.gyroscope]}>
             <Text style={styles.buttonText}>Gyroscope</Text>
           </View>
@@ -37,6 +42,9 @@ export default function Gallery({ navigation }) {
         textAlign: 'center',
         padding: 20,
         color: 'white'
+    },
+    barometer: {
+      backgroundColor: 'green'
     },
     gyroscope: {
         backgroundColor: 'red'

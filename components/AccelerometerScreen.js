@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, TouchableOpacity, View, Button } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Button } from 'react-native';
 import { Accelerometer } from 'expo-sensors';
 
 function round(n) {
@@ -53,24 +53,24 @@ export default function AccelerometerScreen({ navigation }) {
     let { x, y, z } = data;
 
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Accelerometer Screen</Text>
+      <View style={styles.sensor}>
+        <Text style={styles.text}>Accelerometer Screen</Text>
         <Button
           title="Go to Accelerometer... again"
           onPress={() => navigation.navigate('Accelerometer')}
         />
               <Text>Accelerometer: (in Gs where 1 G = 9.81 m s^-2)</Text>
-        <Text>
+        <Text style={styles.text}>
             x: {round(x)} y: {round(y)} z: {round(z)}
         </Text>
-        <View>
-            <TouchableOpacity onPress={_toggle}>
+        <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.button} onPress={_toggle}>
             <Text>Toggle</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={_slow}>
+            <TouchableOpacity style={[styles.button, styles.middleButton]} onPress={_slow}>
             <Text>Slow</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={_fast} >
+            <TouchableOpacity style={styles.button} onPress={_fast} >
             <Text>Fast</Text>
             </TouchableOpacity>
         </View>
@@ -78,3 +78,30 @@ export default function AccelerometerScreen({ navigation }) {
       
     );
   }
+
+  const styles = StyleSheet.create({
+    buttonContainer: {
+      flexDirection: 'row',
+      alignItems: 'stretch',
+      marginTop: 15,
+    },
+    button: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#eee',
+      padding: 10,
+    },
+    middleButton: {
+      borderLeftWidth: 1,
+      borderRightWidth: 1,
+      borderColor: '#ccc',
+    },
+    sensor: {
+      marginTop: 45,
+      paddingHorizontal: 10,
+    },
+    text: {
+      textAlign: 'center',
+    },
+  });
